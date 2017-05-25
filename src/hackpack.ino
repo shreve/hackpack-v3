@@ -17,42 +17,50 @@ SYSTEM_MODE(SEMI_AUTOMATIC);
 // Display it by texting 'animate custom' to your device
 // Color Format is 24-bit RGB (written in hex)
 //*********************************************************************************
+
+uint32_t red    = 0xFF0000;
+uint32_t orange = 0xFF9500;
+uint32_t yellow = 0xFFFF00;
+uint32_t green  = 0x00FF00;
+uint32_t blue   = 0x00FFFF;
+uint32_t indigo = 0x0000FF;
+uint32_t violet = 0xFF00FF;
+
 uint32_t custom_animation_lut[][16] = {
-  { 0xFF0000,0x101010,0x101010,0x101010,
-    0x101010,0x101010,0x101010,0x101010,
-    0x101010,0x101010,0x101010,0x101010,
-    0x101010,0x101010,0x101010,0x101010},   //Frame1
+  { violet, indigo, blue, green,
+    indigo, blue,   green, yellow,
+    blue,   green,  yellow, orange,
+    green,  yellow, orange, red },
 
-  { 0x101010,0x990000,0x101010,0x101010,
-    0x990000,0x101010,0x101010,0x101010,
-    0x101010,0x101010,0x101010,0x101010,
-    0x101010,0x101010,0x101010,0x101010},   //Frame2
+  { indigo, blue, green, yellow,
+    blue, green, yellow, orange,
+    green, yellow, orange, red,
+    yellow, orange, red, violet },
 
-  { 0x101010,0x101010,0x660000,0x101010,
-    0x101010,0x660000,0x101010,0x101010,
-    0x660000,0x101010,0x101010,0x101010,
-    0x101010,0x101010,0x101010,0x101010},   //Frame3
+  { blue, green, yellow, orange,
+    green, yellow, orange, red,
+    yellow, orange, red, violet,
+    orange, red, violet, indigo },
 
-  { 0x101010,0x101010,0x101010,0x330000,
-    0x101010,0x101010,0x330000,0x101010,
-    0x101010,0x330000,0x101010,0x101010,
-    0x330000,0x101010,0x101010,0x101010},   //Frame4
+  { green, yellow, orange, red,
+    yellow, orange, red, violet,
+    orange, red, violet, indigo,
+    red, violet, indigo, blue },
 
-  { 0x101010,0x101010,0x101010,0x101010,
-    0x101010,0x101010,0x101010,0x660000,
-    0x101010,0x101010,0x660000,0x101010,
-    0x101010,0x660000,0x101010,0x101010},   //Frame5
+  { yellow, orange, red, violet,
+    orange, red, violet, indigo,
+    red, violet, indigo, blue,
+    violet, indigo, blue, green },
 
-  { 0x101010,0x101010,0x101010,0x101010,
-    0x101010,0x101010,0x101010,0x101010,
-    0x101010,0x101010,0x101010,0x990000,
-    0x101010,0x101010,0x990000,0x101010},   //Frame6
+  { orange, red, violet, indigo,
+    red, violet, indigo, blue,
+    violet, indigo, blue, green,
+    indigo, blue, green, yellow },
 
-  { 0x101010,0x101010,0x101010,0x101010,
-    0x101010,0x101010,0x101010,0x101010,
-    0x101010,0x101010,0x101010,0x101010,
-    0x101010,0x101010,0x101010,0xFF0000}    //Frame7
-
+  { red, violet, indigo, blue,
+    violet, indigo, blue, green,
+    indigo, blue, green, yellow,
+    blue, green, yellow, orange }
 };
 
 uint16_t custom_animation_length = (sizeof(custom_animation_lut) / sizeof(custom_animation_lut[0]));    //The number of frames in the above array
@@ -62,16 +70,16 @@ uint16_t custom_animation_framerate = 200;                                      
 //Our setup function runs once on power up of the Hackpack it initialises the whole system
 void setup()
 {
-    init_system();
+  init_system();
 
-    block_scale = 1;
-    block_glow = 0;
-    block_jitter = 0;
+  block_scale = 1;
+  block_glow = 0;
+  block_jitter = 0;
 }
 
 //***************************************************************************
 //Our loop function runs in a loop all the time while our Hackpack is powered
 void loop()
 {
-    update_display();
+  update_display();
 }

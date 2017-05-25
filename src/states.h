@@ -5,14 +5,13 @@
 
 //************
 //System state
-typedef enum states
-{
+typedef enum states {
   STARTUP,
   BLOCK,
   CHASE,
   FADE,
   CUSTOM
-}SYSTEM_STATE;
+} SYSTEM_STATE;
 
 extern SYSTEM_STATE CURRENT_STATE;
 extern uint8_t state_transition_flag;
@@ -20,15 +19,14 @@ extern uint8_t state_transition_flag;
 //****************************************************************
 //System display mode - these are independent of the current state
 //The display mode overrides the display for the current state
-typedef enum modes
-{
+typedef enum modes {
   NORMAL,
   ALERT1,
   ALERT2,
   ALERT3,
   CLAIM,
   DOCKED
-}SYSTEM_MODE;
+} SYSTEM_MODE;
 
 extern SYSTEM_MODE ALERT_MODE;
 extern uint8_t mode_transition_flag;

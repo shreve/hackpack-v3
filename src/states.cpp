@@ -6,7 +6,7 @@
 uint8_t state_transition_flag = 1;
 uint8_t mode_transition_flag = 1;
 
-SYSTEM_STATE CURRENT_STATE = STARTUP;
+SYSTEM_STATE CURRENT_STATE = CUSTOM;
 SYSTEM_MODE ALERT_MODE = NORMAL;
 
 //**********************************************
@@ -15,10 +15,10 @@ void init_system(void)
 {
   init_pixels();
 
-  #ifdef HACKPACK_DEBUG
-    Serial.begin(9600);
-    Serial.println("Hello!!");
-  #endif
+#ifdef HACKPACK_DEBUG
+  Serial.begin(9600);
+  Serial.println("Hello!!");
+#endif
 
   //Setup the dock serial port
   Serial1.begin(115200, SERIAL_8N1);
@@ -40,8 +40,7 @@ void init_system(void)
 //Update the animation on the Neopixel grid
 void update_display(void)
 {
-  if(!alert_mode())
-  {
+  if(!alert_mode()) {
     run_display_state();
   }
   return;
@@ -54,31 +53,31 @@ void update_display(void)
 uint8_t alert_mode(void)
 {
   switch(ALERT_MODE)
-  {
+    {
     case(DOCKED):
       docked_sequence();
       return(1);
-    break;
+      break;
     case(ALERT1):
       alert1_sequence();
       return(1);
-    break;
+      break;
     case(CLAIM):
       claim_sequence();
       return(1);
-    break;
+      break;
     case(ALERT2):
       alert2_sequence();
       return(1);
-    break;
+      break;
     case(ALERT3):
       alert3_sequence();
       return(1);
-    break;
+      break;
     default:
       return(0);
-    break;
-  }
+      break;
+    }
 }
 
 //*****************************************
@@ -86,32 +85,32 @@ uint8_t alert_mode(void)
 void run_display_state(void)
 {
   switch(CURRENT_STATE)
-  {
-    //*************************
+    {
+      //*************************
     case(STARTUP):
       startup_display();
-    break;
-    //*************************
+      break;
+      //*************************
     case(BLOCK):
       if(state_transition_flag)
-      {
-        set_all_pixels(grid_color, grid_brightness);
-        state_transition_flag = 0;
-      }
-    break;
-    //*************************
+        {
+          set_all_pixels(grid_color, grid_brightness);
+          state_transition_flag = 0;
+        }
+      break;
+      //*************************
     case(CHASE):
       chase_pixels(grid_color);
-    break;
-    //*************************
+      break;
+      //*************************
     case(FADE):
       fade_pixels(grid_color);
-    break;
-    //*************************
+      break;
+      //*************************
     case(CUSTOM):
       custom_sequence();
-    break;
-  }
+      break;
+    }
   return;
 }
 

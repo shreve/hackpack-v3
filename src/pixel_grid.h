@@ -222,30 +222,30 @@ const uint32_t PROGMEM alert3_lut[][16] = {
 };
 
 const uint32_t PROGMEM alert3_color_lut[] = {
-    0xFFA500,     //Orange
-    0xFFA500,
-    0xFFCC00,     //Orange - Yellow
-    0xFFCC00,
-    0xFFFF00,     //Yellow
-    0xFFFF00,
-    0xADFF2F,     //Yellow - Green
-    0xADFF2F,
-    0x00FF00,     //Green
-    0x00FF00,
-    0x40E0D0,     //Green - Blue
-    0x40E0D0,
-    0x0000FF,     //Blue
-    0x0000FF,
-    0x7B68EE,     //Blue - Violet
-    0x7B68EE,
-    0x800080,     //Violet
-    0x800080,
-    0xD02090,     //Violet - Red
-    0xD02090,
-    0xFF0000,     //Red
-    0xFF0000,
-    0xFF4500,      //Red - Orange
-    0xFF4500
+  0xFFA500,     //Orange
+  0xFFA500,
+  0xFFCC00,     //Orange - Yellow
+  0xFFCC00,
+  0xFFFF00,     //Yellow
+  0xFFFF00,
+  0xADFF2F,     //Yellow - Green
+  0xADFF2F,
+  0x00FF00,     //Green
+  0x00FF00,
+  0x40E0D0,     //Green - Blue
+  0x40E0D0,
+  0x0000FF,     //Blue
+  0x0000FF,
+  0x7B68EE,     //Blue - Violet
+  0x7B68EE,
+  0x800080,     //Violet
+  0x800080,
+  0xD02090,     //Violet - Red
+  0xD02090,
+  0xFF0000,     //Red
+  0xFF0000,
+  0xFF4500,      //Red - Orange
+  0xFF4500
 };
 
 #define LEN_ALERT3_SEQ  (sizeof(alert3_lut) / sizeof(alert3_lut[0]))                 //Number of rows/frames
